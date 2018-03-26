@@ -1,0 +1,83 @@
+<?xml version="1.0"?>
+<template
+    format="5"
+    revision="5"
+    name="RefreshAndLoadMore MVP Fragment"
+    minApi="9"
+    minBuildApi="14"
+    description="Creates a new refreshAndLoadMore mvp fragment">
+
+    <category value="Fragment" />
+    <formfactor value="Mobile" />
+
+    <parameter
+        id="mvpName"
+        name="MVPName"
+        type="string"
+        constraints="unique|nonempty" />
+
+    <parameter
+        id="fragmentClass"
+        name="Fragment Name"
+        type="string"
+        constraints="class|unique|nonempty"
+        suggest="${mvpName}Fragment"
+        default="MainFragment"
+        help="The name of the fragment class to create" />
+
+    <parameter
+        id="generateLayout"
+        name="Generate Layout File"
+        type="boolean"
+        default="true"
+        help="If true, a layout file will be generated" />
+
+    <!-- <parameter
+        id="isBase"
+        name="isBase"
+        type="boolean"
+        default="true"/>
+
+    <parameter
+        id="isRefreshAndLoadMore"
+        name="isRefreshAndLoadMore"
+        type="boolean"
+        default="false"/> -->
+
+  <parameter
+        id="layoutName"
+        name="Fragment Layout Name"
+        type="string"
+        constraints="layout|unique|nonempty"
+        suggest="fragment_${classToResource(fragmentClass)}"
+        default="fragment_blank"
+        visibility="generateLayout"
+        help="The name of the layout to create for the fragment" />
+
+
+    <!-- <parameter
+        id="isLauncher"
+        name="Launcher Activity"
+        type="boolean"
+        default="false"
+        help="If true, this activity will have a CATEGORY_LAUNCHER intent filter, making it visible in the launcher" /> -->
+
+    
+    <parameter
+        id="packageName"
+        name="Package name"
+        type="string"
+        constraints="package"
+        default="com.mycompany.myapp" />
+
+
+    <!-- 128x128 thumbnails relative to template.xml -->
+    <thumbs>
+        <!-- default thumbnail is required -->
+        <thumb>template_blank_activity.png</thumb>
+    </thumbs>
+
+    <globals file="globals.xml.ftl" />
+    <execute file="recipe.xml.ftl" />
+
+</template>
